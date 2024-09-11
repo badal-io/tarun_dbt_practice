@@ -7,6 +7,7 @@
     Try changing "table" to "view" below
 */
 
+-- test for commit
 {{ config(materialized='table') }}
 
 with source_data as (
