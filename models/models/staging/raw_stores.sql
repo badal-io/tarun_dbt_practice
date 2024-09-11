@@ -1,4 +1,11 @@
 
+{{
+    config(
+        tags=["jaffle"]
+    )
+}}
+
+
 with source as (
     select
         id as store_id
