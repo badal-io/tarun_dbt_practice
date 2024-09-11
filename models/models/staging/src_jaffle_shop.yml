@@ -1,0 +1,26 @@
+
+version: 2
+
+sources:
+  - name: dbt_tchopra
+    description: "Raw Jaffle Shop Data"
+    database: prj-s-dlp-dq-sandbox-0b3c
+
+    tables:
+      - name: raw_customers
+        description: "Raw Customer Data"
+
+      - name: raw_orders
+        description: "Raw Orders Data"
+
+      - name: raw_items
+        description: "Raw Items Data"
+      
+      - name: raw_products
+        description: "Raw Products Data"
+      
+      - name: raw_stores
+        description: "Raw Stores Data"
+
+      - name: raw_supplies
+        description: "Raw Supplies Data"
