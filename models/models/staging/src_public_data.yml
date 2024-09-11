@@ -1,0 +1,17 @@
+
+version: 2
+
+sources:
+  - name: dbt_tchopra
+    description: "Raw Public Health Data"
+    database: prj-s-dlp-dq-sandbox-0b3c
+
+    tables:
+      - name: dlp_medical
+        description: "Medical Health Public Data"
+      
+      - name: dlp_physician
+        description: "Medical Physician Public Data"
+
+      - name: dlp_sql_raw
+        description: "Random Public Data"
