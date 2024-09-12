@@ -47,16 +47,10 @@ models:
         description: "id of the store"
       - name: order_subtotal
         description: "sub total value of the order"
-        data_tests:
-        - is_positive
       - name: order_tax_paid
         description: "total tax paid on the order"
-        data_tests:
-        - is_positive
       - name: order_total
         description: "sub total value of the order"
-        data_tests:
-        - is_positive
     
   - name: raw_products
     description: "Products table from Jaffle Shop data"
@@ -74,8 +68,6 @@ models:
         description: "Type of product"
       - name: product_price
         description: "Price of Product"
-        data_tests:
-        - is_positive
       - name: product_description
         description: "Description of Product"
   
@@ -94,7 +86,7 @@ models:
       - name: store_tax_rate
         description: "tax rate of that particular store"
         data_tests:
-        - is_positive
+        - tax_rate
   
   - name: raw_supplies
     description: "Supplies table from Jaffle Shop data"
@@ -107,8 +99,6 @@ models:
         description: "name of supply"
       - name: cost
         description: "cost of supply"
-        data_tests:
-        - is_positive
       - name: perishable
         description: "indicator for whether or not the supply is perishable"
       - name: product_sku

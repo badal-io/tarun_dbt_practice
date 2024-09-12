@@ -1,4 +1,4 @@
-{% test is_positive(model, column_name) %}
+{% test tax_rate(model, column_name) %}
 
 with validation as (
 
@@ -15,7 +15,7 @@ validation_errors as (
         field
 
     from validation
-    where field > 0
+    where field < 0.02
 
 )
 
