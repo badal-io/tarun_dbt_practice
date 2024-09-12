@@ -1,0 +1,215 @@
+
+version: 2
+
+models:
+  - name: raw_customers
+    description: "Customer table from Jaffle Shop data"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Customer name"
+        data_tests:
+          - not_null
+  
+  - name: raw_items
+    description: "Items table from Jaffle Shop data"
+    columns:
+      - name: product_id
+        description: "Id of a particular product, this is a primary key"
+        data_tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "id of the p[articular order]"
+        data_tests:
+          - unique
+      - name: product_sku
+        description: "Sku number of that product"
+        data_tests:
+          - not_null
+  
+  - name: raw_orders
+    description: "Orders table from Jaffle Shop data"
+    columns:
+      - name: order_id
+        description: "Id of a particular order, this is a parimary key"
+        data_tests:
+          - unique
+      - name: customer_id
+        description: "id of the p[articular customer"
+      - name: ordered_at
+        description: "timestamp of when the order was placed"
+      - name: store_id
+        description: "id of the store"
+      - name: order_subtotal
+        description: "sub total value of the order"
+        data_tests:
+        - is_positive
+      - name: order_tax_paid
+        description: "total tax paid on the order"
+        data_tests:
+        - is_positive
+      - name: order_total
+        description: "sub total value of the order"
+        data_tests:
+        - is_positive
+    
+  - name: raw_products
+    description: "Products table from Jaffle Shop data"
+    columns:
+      - name: product_sku
+        description: "SKU of product"
+        data_tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: "Name of product"
+        data_tests:
+          - not_null
+      - name: product_type
+        description: "Type of product"
+      - name: product_price
+        description: "Price of Product"
+        data_tests:
+        - is_positive
+      - name: product_description
+        description: "Description of Product"
+  
+  - name: raw_stores
+    description: "Stores table from Jaffle Shop data"
+    columns:
+      - name: store_id
+        description: "Id of Store"
+        data_tests:
+          - not_null
+          - unique
+      - name: store_name
+        description: "Id of Store"
+      - name: store_opened_at
+        description: "timestamp of when the store was opened"
+      - name: store_tax_rate
+        description: "tax rate of that particular store"
+        data_tests:
+        - is_positive
+  
+  - name: raw_supplies
+    description: "Supplies table from Jaffle Shop data"
+    columns:
+      - name: supply_id
+        description: "Id of supply"
+        data_tests:
+          - not_null
+      - name: supply_name
+        description: "name of supply"
+      - name: cost
+        description: "cost of supply"
+        data_tests:
+        - is_positive
+      - name: perishable
+        description: "indicator for whether or not the supply is perishable"
+      - name: product_sku
+        description: "the products stock keeping unit"
+
+############################################################
+## THESE ARE THE DEFINITIONS OF THE GOOGLE PUBLIC DATASETS 
+  - name: health_care_2020
+    description:  incremental dlp table of actions on GitHub repositories (data taken from bigquery public datasets)
+    columns:
+      - name: primary_id
+        description: unique id for each record in the source table
+      - name: universal_unique_identifier
+        description: random universally unique identifier (UUID) assigned to the query
+        data_tests:
+          - unique
+      - name: actor_attributes_name
+        description: name of actor performing the action on GitHub
+      - name: actor_attributes_email
+        description: email of actor performing the action on GitHub
+      - name: created_at_timestamp
+        description: timestamp of when the action occured on GitHub
+      - name: dbt_load_timestamp
+        description: timestamp of when the source data was loaded into dbt
+      - name: repository_description
+        description: description of the respository in GitHub
+      - name: repository_fork
+        description: indicator for whether or not a new repository that shares code and visibility with the original upstream repository was created 
+      - name: repository_url
+        description: url of the repository in GitHub
+      - name: repository_language
+        description: programming language the repository is configured in
+      - name: repository_has_issues
+        description: indicator for whether or not the respository had issues 
+      - name: type
+        description: action that took place on the GitHub repository
+      - name: tbl_insert
+        description: indicator for whether the record was a dummy record or a valid record
+    
+  - name: medical_2020
+    description:  incremental dlp table of patient services (data taken from bigquery public datasets)
+    columns:
+      - name: primary_id
+        description: unique id for each record in the source table
+      - name: universal_unique_identifier
+        description: random universally unique identifier (UUID) assigned to the query
+        data_tests:
+          - unique
+      - name: insurance_number
+        description: private insurance number of patient
+      - name: patient_full_name
+        description: full name of patient
+      - name: patient_gender
+        description: gender of patient
+      - name: patient_address
+        description: address of patient
+      - name: hcpcs_code
+        description: health care personal coverage code
+      - name: hcpcs_description
+        description: health care personal coverage description
+      - name: hcpcs_drug_indicator
+        description: indicator if a drug was used in treatment
+      - name: nppes_entity_code
+        description: entity type of the provider
+      - name: provider_type
+        description: provider type of the provider
+      - name: place_of_service
+        description: place of service
+      - name: tbl_insert
+        description: indicator for whether the record was a dummy record or a valid record
+
+  - name: physician_2020
+    description:  incremental dlp table of physician services (data taken from bigquery public datasets)
+    columns:
+      - name: primary_id
+        description: unique id for each record in the source table
+      - name: universal_unique_identifier
+        description: random universally unique identifier (UUID) assigned to the query
+        data_tests:
+          - unique
+      - name: dbt_load_timestamp
+        description: timestamp of when the source data was loaded into dbt
+      - name: physician_insurance_number
+        description: private insurance number of physician
+      - name: physician_full_name
+        description: full name of physician
+      - name: physician_gender
+        description: gender of physician
+      - name: physician_address
+        description: address of physician
+      - name: nppes_provider_mi
+        description: middle initial of provider
+      - name: nppes_credentials
+        description: credentials of provider
+      - name: nppes_provider_city
+        description: city of the provider
+      - name: nppes_provider_country
+        description: country of the provider
+      - name: nppes_provider_state
+        description: state of the provider
+      - name: place_of_service
+        description: place of service
+      - name: tbl_insert
+        description: indicator for whether the record was a dummy record or a valid record

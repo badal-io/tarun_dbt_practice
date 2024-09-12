@@ -1,4 +1,5 @@
 
+
 {{
     config(
         tags=["jaffle"]
@@ -21,6 +22,4 @@ with source as (
 )
 
 select * from source
-
-
 
