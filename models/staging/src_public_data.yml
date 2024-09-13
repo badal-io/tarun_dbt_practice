@@ -12,6 +12,14 @@ sources:
       
       - name: dlp_physician
         description: "Medical Physician Public Data"
+        freshness:
+          warn_after: {count: 10, period: day}
+          error_after: {count: 31, period: day}
+        loaded_at_field: dbt_load_timestamp
 
       - name: dlp_sql_raw
         description: "Random Public Data"
+        freshness:
+          warn_after: {count: 10, period: day}
+          error_after: {count: 31, period: day}
+        loaded_at_field: dbt_load_timestamp

@@ -35,4 +35,13 @@ models:
     example:
       +materialized: view
       +tags: "project"
+
+tests:
+  +severity: warn # all tests
   
+vars:
+  Q1: '2024-01-01'
+  Q2: '2024-04-01'
+  Q3: '2024-07-01'
+  Q4: '2024-10-01'
+  problem: 'KAREN'
