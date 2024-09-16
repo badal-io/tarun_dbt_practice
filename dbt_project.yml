@@ -36,7 +36,7 @@ models:
       +materialized: view
       +tags: "project"
 
-tests:
+data_tests:
   +severity: warn # all tests
   
 vars:
