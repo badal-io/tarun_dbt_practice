@@ -18,8 +18,10 @@
 with source_data as (
 
     select 1 as id
+    ,'dog' as animal
     union all
     select null as id
+    ,'cat' as animal
 
 )
 
