@@ -8,7 +8,12 @@
 */
 
 -- test for commit
-{{ config(materialized='table') }}
+{{ 
+    config(
+        materialized='table',
+        tags = "test_tag"
+        ) 
+}}
 
 with source_data as (
 
